@@ -20,14 +20,14 @@
         <div id="layoutSidenav">
 
             <x-navigation-menu />
-    
+
+            <div class="sidebar-overlay" id="sidebarOverlay"></div>
             <div id="layoutSidenav_content">
     
                 <main>
                     @yield('content')
                 </main>
-    
-                <x-footer />
+
                     
             </div>
         </div>

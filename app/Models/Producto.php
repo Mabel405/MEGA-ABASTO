@@ -20,9 +20,6 @@ class Producto extends Model
         'img_path'
     ];
 
-    /* =======================
-       RELACIONES
-    ======================= */
 
     public function compras()
     {
@@ -54,16 +51,13 @@ class Producto extends Model
         return $this->belongsTo(Presentacione::class);
     }
 
-    /* =======================
-       IMAGEN
-    ======================= */
 
     public function handleUploadImage($image)
     {
         $file = $image;
         $name = time() . $file->getClientOriginalName();
 
-        Storage::putFileAs('public/productos', $file, $name);
+        Storage::putFileAs('public/productos', $file, $name); 
 
         return $name;
     }

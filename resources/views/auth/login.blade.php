@@ -16,264 +16,7 @@
         
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-        
-        <style>
-            :root {
-                --primary-color: #4361ee;
-                --primary-dark: #3a56d4;
-                --secondary-color: #7209b7;
-                --accent-color: #f72585;
-                --light-color: #f8f9fa;
-                --dark-color: #212529;
-                --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
-                --gradient-secondary: linear-gradient(135deg, #7209b7 0%, #560bad 100%);
-                --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
-                --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
-                --radius-lg: 20px;
-                --radius-sm: 12px;
-            }
-            
-            * {
-                font-family: 'Poppins', sans-serif;
-            }
-            
-            body {
-                background: var(--gradient-primary);
-                min-height: 100vh;
-                display: flex;
-                align-items: center;
-                padding: 20px;
-            }
-            
-            .login-container {
-                max-width: 480px;
-                margin: 0 auto;
-                width: 100%;
-            }
-            
-            .login-card {
-                background: white;
-                border-radius: var(--radius-lg);
-                box-shadow: var(--shadow-lg);
-                overflow: hidden;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            
-            .login-card:hover {
-                transform: translateY(-5px);
-                box-shadow: var(--shadow-hover);
-            }
-            
-            .card-header {
-                background: var(--gradient-primary);
-                padding: 40px 30px 30px;
-                text-align: center;
-                border-bottom: 5px solid var(--accent-color);
-            }
-            
-            .card-header h2 {
-                color: white;
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 700;
-                font-size: 2.5rem;
-                margin-bottom: 10px;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            }
-            
-            .card-header p {
-                color: rgba(255, 255, 255, 0.85);
-                font-size: 1.1rem;
-                margin: 0;
-            }
-            
-            .card-body {
-                padding: 40px;
-            }
-            
-            .form-label {
-                font-weight: 600;
-                color: var(--dark-color);
-                margin-bottom: 10px;
-                font-size: 1.1rem;
-                display: flex;
-                align-items: center;
-            }
-            
-            .form-label i {
-                margin-right: 10px;
-                color: var(--primary-color);
-                font-size: 1.2rem;
-            }
-            
-            .form-control {
-                padding: 16px 20px;
-                border: 2px solid #e0e0e0;
-                border-radius: var(--radius-sm);
-                font-size: 1.1rem;
-                transition: all 0.3s ease;
-                background-color: #f9f9f9;
-            }
-            
-            .form-control:focus {
-                border-color: var(--primary-color);
-                box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
-                background-color: white;
-            }
-            
-            .form-floating>.form-control {
-                height: calc(3.5rem + 6px);
-                line-height: 1.25;
-            }
-            
-            .form-floating>label {
-                padding: 1rem 1.25rem;
-                font-size: 1.1rem;
-            }
-            
-            .input-group {
-                border-radius: var(--radius-sm);
-                overflow: hidden;
-            }
-            
-            .password-toggle {
-                background-color: white;
-                border: 2px solid #e0e0e0;
-                border-left: none;
-                color: #6c757d;
-                padding: 0 20px;
-                transition: all 0.3s ease;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .password-toggle:hover {
-                background-color: #f8f9fa;
-                color: var(--primary-color);
-            }
-            
-            .password-toggle:focus {
-                box-shadow: none;
-                outline: none;
-            }
-            
-            .btn-login {
-                background: var(--gradient-primary);
-                border: none;
-                color: white;
-                padding: 18px 30px;
-                font-size: 1.2rem;
-                font-weight: 600;
-                border-radius: var(--radius-sm);
-                transition: all 0.3s ease;
-                width: 100%;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-            }
-            
-            .btn-login:hover {
-                background: var(--gradient-secondary);
-                transform: translateY(-3px);
-                box-shadow: 0 10px 20px rgba(114, 9, 183, 0.3);
-                color: white;
-            }
-            
-            .btn-login:active {
-                transform: translateY(-1px);
-            }
-            
-            .alert {
-                border-radius: var(--radius-sm);
-                padding: 16px 20px;
-                border: none;
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
-            
-            .alert-danger {
-                background-color: #ffebee;
-                color: #c62828;
-                border-left: 5px solid #ef5350;
-            }
-            
-            .footer {
-                margin-top: 40px;
-                text-align: center;
-                color: rgba(255, 255, 255, 0.85);
-                font-size: 0.9rem;
-            }
-            
-            .footer a {
-                color: white;
-                text-decoration: none;
-                transition: color 0.3s ease;
-            }
-            
-            .footer a:hover {
-                color: var(--accent-color);
-                text-decoration: underline;
-            }
-            
-            .logo-container {
-                text-align: center;
-                margin-bottom: 30px;
-            }
-            
-            .logo {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 80px;
-                height: 80px;
-                background: white;
-                border-radius: 50%;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                margin-bottom: 15px;
-            }
-            
-            .logo i {
-                font-size: 2.5rem;
-                background: var(--gradient-primary);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            
-            .brand-name {
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 700;
-                color: white;
-                font-size: 1.5rem;
-                letter-spacing: 1px;
-            }
-            
-            /* Responsive */
-            @media (max-width: 576px) {
-                .card-body {
-                    padding: 30px 25px;
-                }
-                
-                .card-header {
-                    padding: 30px 25px 25px;
-                }
-                
-                .card-header h2 {
-                    font-size: 2rem;
-                }
-                
-                .btn-login {
-                    padding: 16px 25px;
-                    font-size: 1.1rem;
-                }
-            }
-            
-            @media (max-height: 700px) {
-                body {
-                    padding-top: 20px;
-                    padding-bottom: 20px;
-                }
-            }
-        </style>
+
     </head>
     <body>
         <div class="login-container">
@@ -348,7 +91,222 @@
                 </div>
             </div>
         </div>
-        
+    <style>
+        :root {
+            --primary-color: #7c83fd;
+            --secondary-color: #a5b4fc;
+            --accent-color: #fbcfe8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+    
+            --gradient-primary: linear-gradient(135deg, #c7d2fe 0%, #fbcfe8 100%);
+            --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.08);
+            --shadow-hover: 0 25px 60px rgba(15, 23, 42, 0.12);
+    
+            --radius-lg: 22px;
+            --radius-sm: 14px;
+        }
+    
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        body {
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+    
+        .login-container {
+            max-width: 420px;
+            width: 100%;
+        }
+    
+        .login-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+    
+        .login-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+    
+        .card-header {
+            background: linear-gradient(135deg, #eef2ff, #fdf2f8);
+            padding: 32px 28px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+    
+        .card-header h2 {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+    
+        .card-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+    
+        .card-body {
+            padding: 32px 30px;
+        }
+    
+        .form-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+    
+        .form-label i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+    
+        .form-control {
+            padding: 14px 16px;
+            border: 1.8px solid #e5e7eb;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            background-color: #f8fafc;
+            transition: 0.2s ease;
+        }
+    
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(124, 131, 253, 0.25);
+            background-color: white;
+        }
+    
+        .input-group {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+    
+        .password-toggle {
+            background: #f8fafc;
+            border: 1.8px solid #e5e7eb;
+            border-left: none;
+            padding: 0 16px;
+            color: #64748b;
+        }
+    
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+    
+        .btn-login {
+            background: linear-gradient(135deg, #a5b4fc, #fbcfe8);
+            border: none;
+            color: #1e293b;
+            padding: 14px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.5px;
+            transition: 0.3s ease;
+        }
+    
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(124, 131, 253, 0.25);
+        }
+    
+        .alert-danger {
+            background: #fef2f2;
+            color: #b91c1c;
+            border-left: 4px solid #f87171;
+        }
+    
+        .logo-container {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+    
+        .logo {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+        }
+    
+        .logo i {
+            font-size: 1.8rem;
+            color: #7c83fd;
+        }
+    
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            letter-spacing: 1px;
+        }
+    
+        /* =======================
+           RESPONSIVE MÓVIL
+        ======================= */
+    
+        @media (max-width: 576px) {
+            body {
+                padding: 10px;
+            }
+    
+            .login-container {
+                max-width: 100%;
+            }
+    
+            .card-header h2 {
+                font-size: 1.5rem;
+            }
+    
+            .card-body {
+                padding: 22px 20px;
+            }
+    
+            .btn-login {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+    
+            .logo {
+                width: 56px;
+                height: 56px;
+            }
+    
+            .logo i {
+                font-size: 1.5rem;
+            }
+    
+            .brand-name {
+                font-size: 1rem;
+            }
+        }
+    
+        @media (max-height: 700px) {
+            body {
+                align-items: flex-start;
+            }
+        }
+    </style>
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script>

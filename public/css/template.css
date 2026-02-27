@@ -10873,15 +10873,16 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-width: 0;
   flex-grow: 1;
   min-height: calc(100vh - 56px);
-  margin-left: -225px;
+  margin-left: 280px;   /* sidebar en desktop */
+  padding: 2.5rem 1.5rem;
+  background: var(--neutral-bg);
 }
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-  transform: translateX(0);
+  margin-left: 0;
 }
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
   content: "";
@@ -11249,48 +11250,45 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 /* =====================
    LAYOUT GENERAL
 ===================== */
 html {
-    font-size: 18px;
+    font-size: 16px; /* base más estándar y responsive */
 }
 
 body {
     font-size: 1rem;
+    background-color: var(--neutral-bg);
 }
 
+/* Contenido principal */
 #layoutSidenav_content {
-    margin-left: 320px !important;
-    padding: 3rem !important;
+    margin-left: 280px !important; /* más equilibrado */
+    padding: 2.5rem 1.5rem !important;
     min-height: 100vh;
-    background: #f8f9fa;
+    background: var(--neutral-bg);
 }
 
 .container,
 .container-fluid {
-    max-width: 95% !important;
+    max-width: 100% !important;
 }
 
 /* =====================
    DASHBOARD / CARDS
-   (SOLO CONTENIDO)
 ===================== */
-#layoutSidenav_content .card {
+#layoutSidenav_content .card-professional {
     min-height: 200px;
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
-    font-size: 1rem;
+    border-radius: 16px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 0.6s ease-out;
-    animation-fill-mode: both;
 }
 
-#layoutSidenav_content .card-body {
-    flex-grow: 1;
-    padding: 1.5rem;
+#layoutSidenav_content .card-professional:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
 }
 
 /* =====================
@@ -11315,15 +11313,16 @@ body {
    TIPOGRAFÍA
 ===================== */
 h1 { font-size: 2.8rem !important; }
-h2 { font-size: 1.9rem !important; }
+h2 { font-size: 2.2rem !important; }
 h3 { font-size: 1.6rem !important; }
 
 .card-title {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .counter-number {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 800;
 }
 
@@ -11344,40 +11343,139 @@ td {
 
 .btn {
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
 }
 
 input,
 select,
 textarea {
     font-size: 1rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
 }
 
 /* =====================
    NAVBAR / SIDEBAR
 ===================== */
 .sb-topnav {
-    height: 70px;
+    height: 72px;
     font-size: 1.05rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .navbar-brand {
     font-size: 1.4rem;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .sb-topnav .nav-link i {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
-.dashboard-card {
-    animation: fadeInUp 0.5s ease-out both;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+    h1 { font-size: 2.4rem !important; }
+    h2 { font-size: 2rem !important; }
+    h3 { font-size: 1.4rem !important; }
+
+    .counter-number {
+        font-size: 2.6rem;
+    }
 }
 
-.dashboard-card:hover {
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+/* =====================
+   TABLAS RESPONSIVE MÓVIL
+===================== */
+
+
+/* evita que se rompa el layout */
+#datatablesSimple {
+    min-width: 0; /* permite que la tabla sea responsive */
+    width: 100%;
+    table-layout: auto;
+}
+
+/* Ajustes solo en celular */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    
+}
+
+/* ===== FIX REAL TABLAS DATATABLES ===== */
+#datatablesSimple {
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto;
+    min-width: 0;
+}
+
+.datatable-wrapper,
+.datatable-container {
+    width: 100% !important;
+    overflow-x: auto;
+}
+
+/* Compactar en móvil */
+@media (max-width: 768px) {
+    #datatablesSimple {
+        font-size: 0.85rem;
+    }
+
+    #datatablesSimple th,
+    #datatablesSimple td {
+        padding: 0.4rem;
+        white-space: nowrap; /* Scroll horizontal */
+    }
+
+    #datatablesSimple .btn {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.4rem;
+    }
+}
+
+@media (max-width: 992px) {
+  #layoutSidenav_content {
+    margin-left: 0 !important;
+    padding: 1rem !important;
+    width: 100%;
+  }
+
+  .container,
+  .container-fluid {
+    max-width: 100% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+
+/* Que el wrapper de DataTables no encoja */
+.dataTables_wrapper {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Que la tabla ocupe todo el ancho */
+.dataTables_wrapper table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: auto;
+}
+
+/* En móvil: permite scroll horizontal limpio */
+@media (max-width: 768px) {
+  #datatablesSimple {
+        font-size: 0.85rem;
+    }
+
+  .dataTables_wrapper table th,
+  .dataTables_wrapper table td {
+      white-space: nowrap; /* ← Esto permite scroll horizontal */
+    }
 }
 
