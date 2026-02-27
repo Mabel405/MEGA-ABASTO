@@ -1,33 +1,17 @@
 FROM php:8.2-apache
 
-# Instalar dependencias del sistema
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    libpq-dev \
-    libzip-dev \
-    && docker-php-ext-install pdo pdo_pgsql zip
-
-# Habilitar mod_rewrite
+# Habilitar mod_rewrite (Laravel lo necesita)
 RUN a2enmod rewrite
 
-# Configurar Apache para que apunte a /public (Laravel)
-RUN sed -ri 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf \
-    && sed -ri 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+# Copiar el proyecto
+COPY . /var/www/html
 
-# Instalar Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Cambiar DocumentRoot de Apache a /public
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
-WORKDIR /var/www/html
-
-# Copiar proyecto
-COPY . .
-
-# Instalar dependencias de PHP
-RUN composer install --no-dev --optimize-autoloader
+# Permitir .htaccess
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 # Permisos para Laravel
-RUN chown -R www-data:www-data storage bootstrap/cache
-
-EXPOSE 80
-CMD ["apache2-foreground"]
+RUN chown -R www-data:www-data /var/www/html \
+ && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
