@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\loginRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
     public function index(){
         if(Auth::check()){
@@ -15,7 +15,7 @@ class loginController extends Controller
         return view('auth.login');
     }
 
-    public function login(loginRequest $request){
+    public function login(LoginRequest $request){
         //validar credenciales
         if(!Auth::validate($request->only('email','password'))){
             return redirect()->to('login')->withErrors('Credenciales incorrectas');

@@ -12,9 +12,9 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\userController;
-use App\Http\Controllers\roleController;
-use App\Http\Controllers\profileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class,'index'])->name('panel');
 
@@ -27,27 +27,15 @@ Route::resources([
     'proveedores' => ProveedoreController::class,
     'compras' => CompraController::class,
     'ventas' => VentaController::class,
-    'users' => userController::class,
-    'roles' => roleController::class,
-    'profile' => profileController::class,
-
+    'users' => UserController::class,
+    'roles' => RoleController::class,
+    'profile' => ProfileController::class,
 ]);
 
-Route::get('/login',[loginController::class,'index'])->name('login');
-Route::post('/login',[loginController::class,'login']);
-Route::post('/logout',[logoutController::class,'logout'])->name('logout');
+Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::post('/login',[LoginController::class,'login']);
+Route::post('/logout',[LogoutController::class,'logout'])->name('logout');
 
-Route::get('/401', function () {
-    return view('pages.401');
-});
-
-
-Route::get('/404', function () {
-    return view('pages.404');
-});
-
-Route::get('/500', function () {
-    return view('pages.500');
-});
-
-
+Route::get('/401', fn() => view('pages.401'));
+Route::get('/404', fn() => view('pages.404'));
+Route::get('/500', fn() => view('pages.500'));
