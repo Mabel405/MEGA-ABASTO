@@ -9,7 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class roleController extends Controller
+class RoleController extends Controller
 {
     function __construct()
     {

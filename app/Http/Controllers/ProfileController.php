@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 
-class profileController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -14,7 +14,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Exception;
 
-class userController extends Controller
+class UserController extends Controller
 {
     function __construct()
    {
